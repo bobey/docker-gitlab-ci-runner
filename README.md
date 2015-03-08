@@ -39,3 +39,18 @@ If you need to start a bash inside your container, use the following command:
 ```
 docker run -e CI_SERVER_URL=https://ci.example.com -e REGISTRATION_TOKEN=replaceme -e HOME=/root --rm -it bobey/docker-gitlab-ci-runner-php55:latest /bin/bash
 ```
+
+## Gitlab CI setup
+
+By starting Gitlab CI runners through Docker, assuming you passed a valid registration token, they will automatically
+add themselves to your CI instance. You should see them in the "Runners" tab.
+
+A basic phpunit job could looks like this:
+
+```
+composer install
+php vendor/phpunit/phpunit/phpunit --coverage-text
+```
+
+By displaying code coverage as text, you can easily extract code coverage metrics. In your project settings, under
+"Test coverage parsing", just input the following regex: `  Lines:\s+(\d+.\d+\%)`.
