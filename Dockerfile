@@ -12,6 +12,7 @@ RUN apt-get update -y && \
     php5 \
     php5-curl \
     php5-mysql \
+    php5-xdebug \
     libssh2-php
 
 RUN curl -sS https://getcomposer.org/installer | php && \
