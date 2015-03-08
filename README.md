@@ -8,7 +8,9 @@ docker build -t bobey/docker-gitlab-ci-runner-php55 github.com/bobey/docker-gitl
 
 docker run -e CI_SERVER_URL=https://ci.example.com -e REGISTRATION_TOKEN=replaceme -e HOME=/root -e GITLAB_SERVER_FQDN=gitlab.example.com bobey/docker-gitlab-ci-runner-php55
 
-docker run -e CI_SERVER_URL=https://ci.example.com -e REGISTRATION_TOKEN=replaceme -e HOME=/root -i -t bobey/docker-gitlab-ci-runner-php55:latest /bin/bash
+docker run -e CI_SERVER_URL=https://ci.example.com -e REGISTRATION_TOKEN=replaceme -e HOME=/root --rm -it bobey/docker-gitlab-ci-runner-php55:latest /bin/bash
+
+docker run -e CI_SERVER_URL=https://ci.example.com -e REGISTRATION_TOKEN=replaceme -e HOME=/root --rm -it -v ~.ssh/id_rsa:/root/.ssh/id_rsa:ro bobey/docker-gitlab-ci-runner-php55:latest /bin/bash
 
 docker build --no-cache -t bobey/docker-gitlab-ci-runner-php55 github.com/bobey/docker-gitlab-ci-runner-php55
 ```

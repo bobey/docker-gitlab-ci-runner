@@ -1,0 +1,15 @@
+#!/bin/bash
+
+if [[ ! -f ~/.ssh/id_dsa && ! -f ~/.ssh/id_rsa ]]
+then
+    echo -e "\033[32mCreating new public key\033[0m"
+    ssh-keygen -q -N '' -f ~/.ssh/id_rsa >/dev/null 2>&1
+
+    echo -e "\033[32mPublic key at $(readlink -f ~/.ssh/id_rsa.pub)\033[0m"
+    cat ~/.ssh/id_rsa.pub
+fi
+
+chmod -R 600 ~/.ssh
+
+ssh-keyscan -H $GITLAB_SERVER_FQDN >> /root/.ssh/known_hosts
+bundle exec ./bin/setup_and_run
