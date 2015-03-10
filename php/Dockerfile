@@ -1,6 +1,6 @@
-# docker-gitlab-ci-runner-php55
+# docker-gitlab-ci-runner-php
 
-FROM gitlabhq/gitlab-ci-runner
+FROM bobey/docker-gitlab-ci-runner
 MAINTAINER  Olivier Balais "obalais@gmail.com"
 
 ENV PHP_DIR /etc/php5
@@ -47,7 +47,3 @@ RUN phpenv install $PHP_VERSION \
 
 RUN curl -sS https://getcomposer.org/installer | php && \
     mv composer.phar /usr/local/bin/composer
-
-ADD files/run /sbin/run
-RUN chmod +x /sbin/run
-CMD "/sbin/run"
