@@ -13,7 +13,7 @@ RUN apt-get update -y && \
     apt-get install -y libmcrypt-dev libltdl-dev libreadline-dev libc-client2007e-dev libbz2-dev libkrb5-dev \
                        libcurl4-gnutls-dev libfreetype6-dev libgmp-dev libjpeg8-dev libpng12-dev libt1-dev \
                        libmhash-dev libexpat1-dev libicu-dev libtidy-dev re2c lemon libldap2-dev libsasl2-dev \
-                       libssh2-php
+                       libssh2-1-dev
 
 # Install some usefull packages
 RUN apt-get update -y && \

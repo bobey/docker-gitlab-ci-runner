@@ -46,3 +46,4 @@
 --with-imap
 --with-imap-ssl
 --with-ldap-sasl
+--with-ssh2
