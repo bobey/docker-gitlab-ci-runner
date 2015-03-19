@@ -35,7 +35,8 @@ RUN git clone https://github.com/CHH/phpenv.git /tmp/phpenv && \
     echo 'eval "$(phpenv init -)"' >> /root/.bashrc
 
 RUN git clone git://github.com/CHH/php-build.git /root/.phpenv/plugins/php-build
-ADD files/configure /root/.phpenv/plugins/php-build/share/php-build/default_configure_options
+COPY files/configure /root/.phpenv/plugins/php-build/share/php-build/default_configure_options
+COPY files/ci-runner.ini /root/.phpenv/versions/5.5.22/etc/conf.d/ci-runner.ini
 
 RUN ln -s /usr/lib/x86_64-linux-gnu/libfreetype.so /usr/lib/libfreetype.so && \
     ln -s /usr/lib/x86_64-linux-gnu/libgmp.so      /usr/lib/libgmp.so && \
