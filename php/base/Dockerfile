@@ -4,7 +4,6 @@ FROM bobey/docker-gitlab-ci-runner
 MAINTAINER  Olivier Balais "obalais@gmail.com"
 
 ENV PHP_DIR /etc/php5
-ENV PHP_VERSION 5.5.22
 ENV PATH /root/.phpenv/bin:/root/.phpenv/shims:$PATH
 
 # Install packages required to build PHP
@@ -36,16 +35,11 @@ RUN git clone https://github.com/CHH/phpenv.git /tmp/phpenv && \
 
 RUN git clone git://github.com/CHH/php-build.git /root/.phpenv/plugins/php-build
 COPY files/configure /root/.phpenv/plugins/php-build/share/php-build/default_configure_options
-COPY files/ci-runner.ini /root/.phpenv/versions/5.5.22/etc/conf.d/ci-runner.ini
 
 RUN ln -s /usr/lib/x86_64-linux-gnu/libfreetype.so /usr/lib/libfreetype.so && \
     ln -s /usr/lib/x86_64-linux-gnu/libgmp.so      /usr/lib/libgmp.so && \
     ln -s /usr/lib/x86_64-linux-gnu/libldap.so     /usr/lib/libldap.so && \
     ln -s /usr/include/x86_64-linux-gnu/gmp.h      /usr/include/gmp.h
-
-RUN phpenv install $PHP_VERSION \
-    phpenv rehash && \
-    phpenv global $PHP_VERSION
 
 RUN curl -sS https://getcomposer.org/installer | php && \
     mv composer.phar /usr/local/bin/composer

@@ -19,7 +19,6 @@ docker build -t bobey/docker-gitlab-ci-runner github.com/bobey/docker-gitlab-ci-
 
 ### Usage
 
-
 ```
 docker pull bobey/docker-gitlab-ci-runner
 ```
@@ -123,3 +122,7 @@ docker build -t bobey/docker-gitlab-ci-runner-php github.com/bobey/docker-gitlab
 
 By starting Gitlab CI runners through Docker, assuming you passed a valid registration token, they will automatically
 add themselves to your CI instance. You should see them in the "Runners" tab.
+
+## Contributors
+
+Thanks to the awesome [@jubianchi](https://twitter.com/jubianchi) for its help with the base php image.
