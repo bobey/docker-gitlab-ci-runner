@@ -57,14 +57,6 @@ We provide docker gitlab-ci runner images for php 5.3, 5.4, 5.5 and 5.6 containi
 - Git
 - Composer
 
-These images also comes with the following extensions pre-installed but not enabled by default with the exception of
-`xdebug`:
-
-- memcache
-- mongo.so
-- redis.so
-- xdebug.so
-
 ### Usage
 
 You can run as many runners as you want by executing:
@@ -89,14 +81,25 @@ By displaying code coverage as text, you can easily extract code coverage metric
 
 ### Custom PHP configuration
 
-If you need to customize the php configuration, you can add your own settings to the `ci-runner.ini` file.
-For example, `bobey/docker-gitlab-ci-runner-php5.5` comes with pre-installed mongo.so extension but yet need to be
-loaded if you need it.
+All PHP images comes with the following extensions pre-installed but not enabled by default with the exception of
+`xdebug`:
 
-The following command in your gitlab-ci job will do the trick:
+- memcache
+- mongo.so
+- redis.so
+- xdebug.so
+
+If you need to customize the php configuration, you can add your own settings to the `ci-runner.ini` file.
+For example, the following command in one of your gitlab-ci jobs will enable `mongo.so` extension:
 
 ```
-echo "extension=mongo.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/ci-runner.ini
+echo 'extension="mongo.so"' >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/ci-runner.ini
+```
+
+You can of course customize any other parameter of the `php.ini` configuration file. Below command will set `Europe/Paris` as the default timezone:
+
+```
+echo 'date.timezone="Europe/Paris"' >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/ci-runner.ini
 ```
 
 ### Development
