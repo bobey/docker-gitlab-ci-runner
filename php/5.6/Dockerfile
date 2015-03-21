@@ -1,9 +1,9 @@
-# docker-gitlab-ci-runner-php5.5
+# docker-gitlab-ci-runner-php5.6
 
 FROM bobey/docker-gitlab-ci-runner-php
 MAINTAINER  Olivier Balais "obalais@gmail.com"
 
-ENV PHP_VERSION 5.5.22
+ENV PHP_VERSION 5.6.7
 
 COPY files/ci-runner.ini /root/.phpenv/versions/$PHP_VERSION/etc/conf.d/ci-runner.ini
 
