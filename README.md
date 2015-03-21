@@ -1,4 +1,4 @@
-# Docker GitlabCI Runner PHP 5.5
+# Docker GitlabCI Runner images
 
 Gitlab CI runner docker base images with ssh-key sharing.
 
@@ -49,11 +49,11 @@ If you need to start a bash inside your container, use the following command:
 docker run -e CI_SERVER_URL=https://ci.example.com -e REGISTRATION_TOKEN=replaceme -e HOME=/root --rm -it bobey/docker-gitlab-ci-runner:latest /bin/bash
 ```
 
-## PHP Image
+## PHP Images
 
-A docker gitlab-ci runner containing the following stack:
+We provide docker gitlab-ci runner images for php 5.3, 5.4, 5.5 and 5.6 containing the following stack:
 
-- PHP 5.5
+- PHP 5.x
 - Git
 - Composer
 - Xdebug
@@ -67,7 +67,7 @@ docker run \
   -e CI_SERVER_URL=https://ci.example.com \
   -e REGISTRATION_TOKEN=replaceme -e HOME=/root \
   -e GITLAB_SERVER_FQDN=gitlab.example.com \
-  bobey/docker-gitlab-ci-runner-php
+  bobey/docker-gitlab-ci-runner-php5.6
 ```
 
 In your GitlabCI, a basic phpunit job could looks like this:
@@ -87,7 +87,7 @@ This docker image is based on bobey/docker-gitlab-ci-runner image. In order to b
 command:
 
 ```
-docker build -t bobey/docker-gitlab-ci-runner-php github.com/bobey/docker-gitlab-ci-runner/php
+docker build -t bobey/docker-gitlab-ci-runner-php5.6 github.com/bobey/docker-gitlab-ci-runner/php/5.6
 ```
 
 ## NodeJS Image
@@ -125,4 +125,4 @@ add themselves to your CI instance. You should see them in the "Runners" tab.
 
 ## Contributors
 
-Thanks to the awesome [@jubianchi](https://twitter.com/jubianchi) for its help with the base php image.
+Many thanks to the awesome [@jubianchi](https://twitter.com/jubianchi) for its help with the base php image.
