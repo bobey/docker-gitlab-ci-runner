@@ -99,7 +99,7 @@ By displaying code coverage as text, you can easily extract code coverage metric
 All PHP images comes with the following extensions pre-installed but not enabled by default with the exception of
 `xdebug`:
 
-- memcache
+- memcache.so
 - mongo.so
 - redis.so
 - xdebug.so
