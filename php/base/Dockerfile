@@ -20,7 +20,8 @@ RUN apt-get update -y && \
                        wget \
                        curl \
                        apache2 \
-                       php-pear
+                       php-pear \
+                       php5-dev
 
 # Install a specific bison version
 RUN wget -O /tmp/libbison-dev.deb http://launchpadlibrarian.net/140087283/libbison-dev_2.7.1.dfsg-1_amd64.deb && \
