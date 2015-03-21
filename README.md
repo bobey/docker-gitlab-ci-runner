@@ -56,7 +56,14 @@ We provide docker gitlab-ci runner images for php 5.3, 5.4, 5.5 and 5.6 containi
 - PHP 5.x
 - Git
 - Composer
-- Xdebug
+
+These images also comes with the following extensions pre-installed but not enabled by default with the exception of
+`xdebug`:
+
+- memcache
+- mongo.so
+- redis.so
+- xdebug.so
 
 ### Usage
 
@@ -80,6 +87,17 @@ php vendor/phpunit/phpunit/phpunit --coverage-text
 By displaying code coverage as text, you can easily extract code coverage metrics. In your project settings, under
 "Test coverage parsing", just input the following regex: `  Lines:\s+(\d+.\d+\%)`.
 
+### Custom PHP configuration
+
+If you need to customize the php configuration, you can add your own settings to the `ci-runner.ini` file.
+For example, `bobey/docker-gitlab-ci-runner-php5.5` comes with pre-installed mongo.so extension but yet need to be
+loaded if you need it.
+
+The following command in your gitlab-ci job will do the trick:
+
+```
+echo "extension=mongo.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/ci-runner.ini
+```
 
 ### Development
 
