@@ -4,7 +4,7 @@ Gitlab CI runner docker base images with ssh-key sharing.
 
 ## Base Image
 
-This docker image is based on gitlabhq/gitlab-ci-runner image and provide a way to pass it an ssh-key or automatically
+This docker image is based on [gitlabhq/gitlab-ci-runner](https://github.com/gitlabhq/gitlab-ci-runner) image and provide a way to pass it an ssh-key or automatically
 generate a new one.
 This is a base image you can extend with your own stack.
 
