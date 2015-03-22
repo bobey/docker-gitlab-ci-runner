@@ -20,8 +20,7 @@ RUN apt-get update -y && \
                        wget \
                        curl \
                        apache2 \
-                       php-pear \
-                       php5-dev
+                       php-pear
 
 # Install a specific bison version
 RUN wget -O /tmp/libbison-dev.deb http://launchpadlibrarian.net/140087283/libbison-dev_2.7.1.dfsg-1_amd64.deb && \
@@ -42,12 +41,6 @@ RUN ln -s /usr/lib/x86_64-linux-gnu/libfreetype.so /usr/lib/libfreetype.so && \
     ln -s /usr/lib/x86_64-linux-gnu/libgmp.so      /usr/lib/libgmp.so && \
     ln -s /usr/lib/x86_64-linux-gnu/libldap.so     /usr/lib/libldap.so && \
     ln -s /usr/include/x86_64-linux-gnu/gmp.h      /usr/include/gmp.h
-
-# Install PHP PECL extensions
-RUN yes '' | pecl install \
-	mongo \
-	redis \
-	memcache
 
 # Install composer
 RUN curl -sS https://getcomposer.org/installer | php && \

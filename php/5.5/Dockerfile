@@ -10,3 +10,9 @@ COPY files/ci-runner.ini /root/.phpenv/versions/$PHP_VERSION/etc/conf.d/ci-runne
 RUN phpenv install $PHP_VERSION \
     phpenv rehash && \
     phpenv global $PHP_VERSION
+
+# Install PHP PECL extensions
+RUN yes '' | pecl install \
+	mongo \
+	redis \
+	memcache
