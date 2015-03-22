@@ -66,7 +66,7 @@ docker run -e CI_SERVER_URL=https://ci.example.com -e REGISTRATION_TOKEN=replace
 
 ## PHP Images
 
-We provide docker gitlab-ci runner images for php 5.3, 5.4, 5.5 and 5.6 containing the following stack:
+We provide docker gitlab-ci runner images for php 5.4, 5.5 and 5.6 containing the following stack:
 
 - PHP 5.x
 - Git
@@ -102,6 +102,7 @@ All PHP images comes with the following extensions pre-installed but not enabled
 - memcache.so
 - mongo.so
 - redis.so
+- ssh2.so
 - xdebug.so
 
 If you need to customize the php configuration, you can add your own settings to the `ci-runner.ini` file.

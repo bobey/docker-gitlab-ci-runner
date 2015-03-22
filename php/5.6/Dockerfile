@@ -15,4 +15,5 @@ RUN phpenv install $PHP_VERSION \
 RUN yes '' | pecl install \
 	mongo \
 	redis \
-	memcache
+	memcache \
+	ssh2-0.12
