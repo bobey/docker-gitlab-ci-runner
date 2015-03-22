@@ -41,7 +41,12 @@ docker pull bobey/docker-gitlab-ci-runner
 Then, you can run as many runners as you want by executing:
 
 ```
-docker run -e CI_SERVER_URL=https://ci.example.com -e REGISTRATION_TOKEN=replaceme -e HOME=/root -e GITLAB_SERVER_FQDN=gitlab.example.com bobey/docker-gitlab-ci-runner
+docker run \
+  -e CI_SERVER_URL=https://ci.example.com \
+  -e REGISTRATION_TOKEN=replaceme \
+  -e HOME=/root \
+  -e GITLAB_SERVER_FQDN=gitlab.example.com \
+  bobey/docker-gitlab-ci-runner
 ```
 
 If you need to pass an ssh key to the runner (a deploy key for example), use the following command:
@@ -49,7 +54,8 @@ If you need to pass an ssh key to the runner (a deploy key for example), use the
 ```
 docker run \
   -e CI_SERVER_URL=https://ci.example.com \
-  -e REGISTRATION_TOKEN=replaceme -e HOME=/root \
+  -e REGISTRATION_TOKEN=replaceme \
+  -e HOME=/root \
   -e GITLAB_SERVER_FQDN=gitlab.example.com \
   -v /absolute/path/to/your/home/.ssh/id_rsa:/root/.ssh/id_rsa:ro \
   bobey/docker-gitlab-ci-runner
@@ -61,7 +67,11 @@ on standard output.
 If you need to start a bash inside your container, use the following command:
 
 ```
-docker run -e CI_SERVER_URL=https://ci.example.com -e REGISTRATION_TOKEN=replaceme -e HOME=/root --rm -it bobey/docker-gitlab-ci-runner:latest /bin/bash
+docker run \
+  -e CI_SERVER_URL=https://ci.example.com \
+  -e REGISTRATION_TOKEN=replaceme \
+  -e HOME=/root --rm -it \
+  bobey/docker-gitlab-ci-runner:latest /bin/bash
 ```
 
 ## PHP Images
@@ -79,8 +89,10 @@ You can run as many runners as you want by executing:
 ```
 docker run \
   -e CI_SERVER_URL=https://ci.example.com \
-  -e REGISTRATION_TOKEN=replaceme -e HOME=/root \
+  -e REGISTRATION_TOKEN=replaceme \
+  -e HOME=/root \
   -e GITLAB_SERVER_FQDN=gitlab.example.com \
+  -v /absolute/path/to/your/home/.ssh/id_rsa:/root/.ssh/id_rsa:ro \
   bobey/docker-gitlab-ci-runner-php5.6
 ```
 
@@ -141,8 +153,10 @@ You can run as many runners as you want by executing:
 ```
 docker run \
   -e CI_SERVER_URL=https://ci.example.com \
-  -e REGISTRATION_TOKEN=replaceme -e HOME=/root \
+  -e REGISTRATION_TOKEN=replaceme \
+  -e HOME=/root \
   -e GITLAB_SERVER_FQDN=gitlab.example.com \
+  -v /absolute/path/to/your/home/.ssh/id_rsa:/root/.ssh/id_rsa:ro \
   bobey/docker-gitlab-ci-runner-nodejs
 ```
 
