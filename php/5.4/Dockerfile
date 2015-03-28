@@ -16,4 +16,5 @@ RUN yes '' | pecl install \
 	mongo \
 	redis \
 	memcache \
-	ssh2-0.12
+	ssh2-0.12 \
+	xdebug
