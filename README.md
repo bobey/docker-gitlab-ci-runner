@@ -130,6 +130,30 @@ You can of course customize any other parameter of the `php.ini` configuration f
 echo 'date.timezone="Europe/Paris"' >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/ci-runner.ini
 ```
 
+### Composer and Github API rate limit
+
+All PHP images comes with Composer pre-installed and ready to be used. But, as you might already know, Github API rate limit is quite often reached when building projects in CI. See what [Composer doc say about it](https://getcomposer.org/doc/articles/troubleshooting.md#api-rate-limit-and-oauth-tokens).
+
+One way to handle this problem is to create an `auth.json` file and share it with your gitlab-ci-runners via a volume:
+
+```json
+{
+    "http-basic": {},
+    "github-oauth": {
+        "github.com": "GITHUB_GENERATED_TOKEN"
+    }
+}
+```
+
+Then, start your runner with an extra `-v` option:
+
+```
+docker run \
+  -e ...
+  -v /absolute/path/to/composer-auth.json:/root/.composer/auth.json:ro \
+  bobey/docker-gitlab-ci-runner-php5.6
+```
+
 ### Development
 
 This docker image is based on bobey/docker-gitlab-ci-runner image. In order to build it, you need to execute the following
