@@ -15,7 +15,6 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y install software-properties-common
 RUN DEBIAN_FRONTEND=noninteractive LC_ALL=C.UTF-8 add-apt-repository ppa:ondrej/php
 
 RUN DEBIAN_FRONTEND=noninteractive apt-get update && apt-get install -y \
-    php7.0-fpm \
     php7.0-cli \
     php7.0-common \
     php7.0-dev \
@@ -29,18 +28,15 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update && apt-get install -y \
     php7.0-ldap \
     php7.0-pgsql \
     php7.0-sqlite \
+    php7.0-pdo \
     php7.0-pspell \
     php7.0-recode \
     php7.0-tidy \
     php7.0-intl \
     php7.0-curl \
     php7.0-zip \
-    php7.0-xml
-
-# Install PHP PECL extensions
-RUN yes '' | pecl install \
-	mongo \
-	redis \
-	memcache \
-	ssh2-0.12 \
-	xdebug
+    php7.0-xml \
+    php-mongodb \
+    php-redis \
+    php-memcache \
+    php-xdebug
