@@ -2,7 +2,7 @@
 
 Gitlab CI runner docker base images with ssh-key sharing.
 
-Take care, this project is not maintained anymore and deprecated in favor of official [Gitlab Multi-Runner](https://gitlab.com/gitlab-org/gitlab-ci-multi-runner)
+Take care, this project is not maintained anymore and **deprecated** in favor of official [Gitlab Multi-Runner](https://gitlab.com/gitlab-org/gitlab-ci-multi-runner)
 
 ## Table of contents
 
