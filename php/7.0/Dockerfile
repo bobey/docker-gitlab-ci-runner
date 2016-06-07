@@ -3,9 +3,13 @@
 FROM bobey/docker-gitlab-ci-runner-php
 MAINTAINER  Olivier Balais "obalais@gmail.com"
 
-ENV PHP_VERSION 7.0
+ENV PHP_VERSION 7.0.4
 
-COPY "files/ci-runner.ini" "/etc/php/7.0/cli/conf.d/ci-runner.ini"
+COPY files/ci-runner.ini /root/.phpenv/versions/$PHP_VERSION/etc/conf.d/ci-runner.ini
+
+RUN phpenv install $PHP_VERSION \
+    phpenv rehash && \
+    phpenv global $PHP_VERSION
 
 RUN DEBIAN_FRONTEND=noninteractive apt-get remove -y --purge php*
 
